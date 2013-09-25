@@ -10,6 +10,16 @@
     return new Coordinate(coord.x + dir[0], coord.y + dir[1]);
   }
 
+  Coordinate.prototype.equals = function (coord) {
+    return this.x === coord.x && this.y === coord.y
+  }
+
+  Coordinate.createApple = function() {
+    var x = Math.floor(Math.random() * 10);
+    var y = Math.floor(Math.random() * 10);
+    return new Coordinate(x, y);
+  }
+
   var startingCoordinate = new Coordinate(5,5)
 
   var Snake = Snake.Snake = function () {
@@ -28,9 +38,9 @@
     console.log(scale)
   }
 
-  Snake.prototype.includesCoordinate = function(coordinate) {
-    for (var i = 0; i < this.scales.length; i++) {
-      if (this.scales[i].x === coordinate.x && this.scales[i].y === coordinate.y) {
+  Array.prototype.includesCoordinate = function(coordinate) {
+    for (var i = 0; i < this.length; i++) {
+      if (this[i].equals(coordinate)) {
         return true;
       }
     }
@@ -41,20 +51,10 @@
     this.dir = newDir;
   }
 
-  // Snake.prototype.bindKeyHandlers = function () {
-  //   var snake = this;
-  //   key('up', function() {
-  //     snake.turn([0, -1]);
-  //    });
-  //   key('down', function() {
-  //     snake.turn([0, 1]);
-  //   });
-  //   key('left', function() {
-  //     snake.turn([-1, 0]);
-  //   });
-  //   key('right', function() {
-  //     snake.turn([1, 0]);
-  //   });
-  // }
+  Snake.prototype.grow = function () {
+    var tail = this.scales[this.scales.length - 1];
+    var newTail = Coordinate.newScaleByCoord(tail, [0, 0]);
+    this.scales.push(newTail)
+  }
 
 })(this);

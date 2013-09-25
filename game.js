@@ -18,10 +18,25 @@
   Game.prototype.step = function() {
     console.log('step')
     this.move();
+
+    if (this.board.apples.length < 1) {
+      this.board.apples.push(Snake.Coordinate.createApple());
+    }
+
+    if (this.board.collision() || this.board.outOfBounds()) {
+      this.stop();
+    } else if (this.board.collisionWithApple()) {
+      this.board.cats.push(this.board.snake.scales[0])
+      this.board.snake.grow();
+      this.removeApple();
+    }
+
     this.draw();
-    // if (this.checkCollisions()) {
- //      this.stop();
- //    }
+    //
+  }
+
+  Game.prototype.removeApple = function() {
+    return this.board.apples.pop();
   }
 
   Game.prototype.start = function() {

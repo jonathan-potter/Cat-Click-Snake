@@ -5,6 +5,14 @@ ul {
   border: 2px solid black;
 }
 
+.container {
+  position:relative;
+  width: 264px;
+  margin: 0 auto;
+  background: url("cat.jpg") no-repeat center;
+  z-index:-1;
+}
+
 /* Clearfix to grow the height of
    the <ul> to match the contained floats */
 ul:after {
@@ -26,15 +34,22 @@ li {
 
 }
 
-/* Float the <li>s */
-.snake {
-  background: red;
+.apple {
+  background: orange;
+  z-index: 2;
 }
 
 li:hover {
   background: yellow;
 }
 
-.clicked {
+.cat {
   background: transparent;
+  z-index: 1;
+}
+
+/* Float the <li>s */
+.snake {
+  background: red;
+  z-index: 3;
 }
