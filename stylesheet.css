@@ -1,0 +1,40 @@
+ul {
+  width: 264px;
+  margin: 0 auto;
+  padding: 0;
+  border: 2px solid black;
+}
+
+/* Clearfix to grow the height of
+   the <ul> to match the contained floats */
+ul:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  background: gray;
+  float: left;
+  cursor: pointer;
+
+}
+
+/* Float the <li>s */
+.snake {
+  background: red;
+}
+
+li:hover {
+  background: yellow;
+}
+
+.clicked {
+  background: transparent;
+}
