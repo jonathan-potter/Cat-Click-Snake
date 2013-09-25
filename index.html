@@ -1,33 +1,58 @@
 <html>
-  <head>Snake!
-    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  <head>
+    <title>Snake!</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  </head>
+  <body>
+    <h1>Cat Click / Snake!</h1>
+    <ul>
+    </ul>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="keymaster.min.js"></script>
     <script src="snake.js"></script>
     <script src="board.js"></script>
     <script src="game.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <ul>
-        <script>
-          var width = 11;
-          var height = 11;
 
-          for (var y = 0; y < height; y++) {
-            for (var x = 0; x < width; x++) {
-              document.write('<li x="' + x + '" y="' + y + '"></li>')
-            }
+    <script>
+      $(document).ready(function () {
+
+        var width = 11;
+        var height = 11;
+        var html = ""
+
+        for (var y = 0; y < height; y++) {
+          for (var x = 0; x < width; x++) {
+             html += '<li x="' + x + '" y="' + y + '"></li>';
           }
-
-          var game = new Snake.Game(width, height);
-          game.start();
-        </script>
-      </ul>
-    </div>
+        }
+        $('ul').html(html);
 
 
+        var init = function(){
+          $li = $("li");
+          bind();
+        }
 
+        var bind = function(){
+          $li.on("click", liClick);
+        }
+
+        // Function to deal with clicked elements
+        var liClick = function(event){
+          var $clickedLi = $(this);
+
+          // Use classes to toggle visual state
+          // Only use inline styles as last resort
+          $clickedLi.addClass("cat");
+        }
+
+        init();
+
+        var game = new Snake.Game(width, height);
+        game.start();
+      })
+    </script>
 
   </body>
 </html>

@@ -48,7 +48,11 @@
   }
 
   Snake.prototype.turn = function (newDir) {
-    this.dir = newDir;
+    bothX = Math.abs(this.dir[0]) === Math.abs(newDir[0]);
+    bothY = Math.abs(this.dir[1]) === Math.abs(newDir[1]);
+    if (!(bothX || bothY)) {
+      this.dir = newDir;
+    }
   }
 
   Snake.prototype.grow = function () {

@@ -1,7 +1,7 @@
 (function (root) {
   var Snake = root.Snake = (root.Snake || {});
 
-  gameSpeed = 200;
+  gameSpeed = 100;
 
   Game = Snake.Game = function (width, height) {
     this.board = new Snake.Board(width, height);
@@ -20,7 +20,7 @@
     this.move();
 
     if (this.board.apples.length < 1) {
-      this.board.apples.push(Snake.Coordinate.createApple());
+      this.board.createApple();
     }
 
     if (this.board.collision() || this.board.outOfBounds()) {

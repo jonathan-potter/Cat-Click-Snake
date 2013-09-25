@@ -72,4 +72,13 @@
     return obx || oby;
   }
 
+  Board.prototype.createApple = function () {
+    do {
+      var newApple = Snake.Coordinate.createApple();
+      var overlappingApple = this.apples.includesCoordinate(newApple)
+      var overlappingSnake = this.snake.scales.includesCoordinate(newApple)
+    } while(overlappingApple || overlappingSnake)
+    this.apples.push(newApple)
+  }
+
 })(this);
