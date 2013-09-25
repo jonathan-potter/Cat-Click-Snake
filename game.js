@@ -5,6 +5,7 @@
 
   Game = Snake.Game = function (width, height) {
     this.board = new Snake.Board(width, height);
+    this.score = 0;
   }
 
   Game.prototype.move = function() {
@@ -36,6 +37,8 @@
   }
 
   Game.prototype.removeApple = function() {
+    this.score += 1;
+    this.updateScoreboard();
     return this.board.apples.pop();
   }
 
@@ -63,6 +66,10 @@
     key('right', function() {
       snake.turn([1, 0]);
     });
+  }
+
+  Game.prototype.updateScoreboard = function () {
+    $('.scoreboard').html("score: " + this.score)
   }
 
 })(this);

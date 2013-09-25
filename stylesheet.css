@@ -10,7 +10,7 @@ ul {
   margin: 0 auto;
   padding: 0;
   border: 2px solid black;
-  background: url("cat.jpg") no-repeat center;
+  background: url("http://placekitten.com/g/264/264") no-repeat center;
   z-index:-1;
 }
 
@@ -31,18 +31,15 @@ li {
   border: 2px solid black;
   background: gray;
   float: left;
-  z-index: 10000;
 
 }
 
 .cat {
   background: transparent;
-  z-index: 1;
 }
 
 .apple {
   background: orange;
-  z-index: 2;
 }
 
 li:hover {
@@ -57,5 +54,15 @@ a:hover {
 /* Float the <li>s */
 .snake {
   background: red;
-  z-index: 3;
+}
+
+.scoreboard {
+  width: 264px;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-top:none;
+  text-align: center;
+  font-family: sans-serif;
+  padding: 0;
+  background: gray;
 }
