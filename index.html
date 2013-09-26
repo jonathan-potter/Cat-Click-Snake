@@ -8,7 +8,7 @@
     <ul>
     </ul>
     <div class="scoreboard">score: 0</div>
-    <div class="resetButton"></div>
+    <div class="resetButton">RESET</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="keymaster.min.js"></script>
@@ -34,6 +34,7 @@
         var init = function(){
           $li = $("li");
           bind();
+          startNewGame();
         }
 
         var bind = function(){
@@ -47,6 +48,18 @@
           // Use classes to toggle visual state
           // Only use inline styles as last resort
           $clickedLi.addClass("cat");
+        }
+
+        $('.resetButton').mouseenter(function() {
+            $(this).fadeTo('fast',1);
+        });
+
+        $('.resetButton').mouseleave(function() {
+            $(this).fadeTo('fast',0.5);
+        });
+
+        var startNewGame = function () {
+          var game = undefined;
         }
 
         init();

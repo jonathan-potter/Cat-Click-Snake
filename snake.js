@@ -23,7 +23,7 @@
   var startingCoordinate = new Coordinate(5,5)
 
   var Snake = Snake.Snake = function () {
-    this.dir = [0,1];
+    this.dir = [0,-1];
     this.scales = [startingCoordinate,
                    startingCoordinate,
                    startingCoordinate,

@@ -1,9 +1,11 @@
 (function (root) {
   var Snake = root.Snake = (root.Snake || {});
 
-  gameSpeed = 100;
+  gameSpeed = 120;
 
   Game = Snake.Game = function (width, height) {
+    Snake.width = width;
+    Snake.height = height;
     this.board = new Snake.Board(width, height);
     this.score = 0;
   }
@@ -45,6 +47,7 @@
   Game.prototype.start = function() {
     var that = this;
     this.bindKeyHandlers();
+    this.updateScoreboard();
     this.intervalId = window.setInterval(that.step.bind(that), gameSpeed);
   }
 
@@ -53,6 +56,7 @@
   }
 
   Game.prototype.bindKeyHandlers = function () {
+    game = this
     var snake = this.board.snake;
     key('up', function() {
       snake.turn([0, -1]);
@@ -66,6 +70,11 @@
     key('right', function() {
       snake.turn([1, 0]);
     });
+    $('.resetButton').on("click", function () {
+      game.stop();
+      game = new Snake.Game(Snake.width, Snake.height);
+      game.start();
+    })
   }
 
   Game.prototype.updateScoreboard = function () {
